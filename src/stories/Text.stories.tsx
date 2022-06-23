@@ -6,44 +6,42 @@ export default {
   component: Text,
 } as ComponentMeta<typeof Text>;
 
-const Template: ComponentStory<typeof Text> = (args) => (
-  <Text {...args}>Текст</Text>
-);
-
-const TemplateList: ComponentStory<typeof Text> = () => (
+const TemplateList: ComponentStory<typeof Text> = (args) => (
   <>
-    <Text size="h1" display="block">
-      h1
+    <Text variant="h1" display="block" {...args}>
+      Heading 1
     </Text>
-    <Text size="h2" display="block">
-      h2
+    <Text variant="h2" display="block" {...args}>
+      Heading 2
     </Text>
-    <Text size="h3" display="block">
-      h3
+    <Text variant="h3" display="block" {...args}>
+      Heading 3
     </Text>
-    <Text size="h4" display="block">
-      h4
+    <Text variant="h4" display="block" {...args}>
+      Heading 4
     </Text>
-    <Text size="h5" display="block">
-      h5
+    <Text variant="h5" display="block" {...args}>
+      Heading 5
     </Text>
-    <Text size="h6" display="block">
-      h6
+    <Text variant="h6" display="block" {...args}>
+      Heading 6
     </Text>
-    <Text size="body1" display="block">
+    <Text variant="body1" display="block" {...args}>
       body1
     </Text>
-    <Text size="body2" display="block">
+    <Text variant="body2" display="block" {...args}>
       body2
     </Text>
-    <Text size="caption" display="block">
+    <Text variant="caption" display="block" {...args}>
       caption
     </Text>
   </>
 );
 
-export const Default = Template.bind({});
-Default.args = {};
+export const SansSerif = TemplateList.bind({});
+SansSerif.args = {};
 
-export const List = TemplateList.bind({});
-List.args = {};
+export const Serif = TemplateList.bind({});
+Serif.args = {
+  serif: true,
+};

@@ -22,43 +22,46 @@ export const Tooltip: FC<ITooltipProps> = ({
   const refTooltip =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement>;
 
-  const handleChangeStyle = useCallback((rect, currentPosition: IPositions) => {
-    const positions: {
-      [key in IPositions]: () => string;
-    } = {
-      top: () => `
-          top: ${rect.top}px;
-          left: ${rect.left + rect.width / 2}px;
-          transform: translate(-50%, calc(-100% + -5px));
-          display: flex;
-          justify-content: center;
-        `,
-      left: () => `
-          top: ${rect.top}px;
-          right: ${window.innerWidth + 5 - rect.left}px;
-          height: ${rect.height}px;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;`,
-      right: () => `
-          top: ${rect.top}px;
-          left: ${rect.left + rect.width + 5}px;
-          height: ${rect.height}px;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-        `,
-      bottom: () => `
-          top: ${rect.top + rect.height + 5}px;
-          left: ${rect.left + rect.width / 2}px;
-          display: flex;
-          transform: translate(-50%, 0);
-          justify-content: center;
-        `,
-    };
+  const handleChangeStyle = useCallback(
+    (rect: DOMRect, currentPosition: IPositions) => {
+      const positions: {
+        [key in IPositions]: () => string;
+      } = {
+        top: () => `
+					top: ${rect.top}px;
+					left: ${rect.left + rect.width / 2}px;
+					transform: translate(-50%, calc(-100% + -5px));
+					display: flex;
+					justify-content: center;
+				`,
+        left: () => `
+					top: ${rect.top}px;
+					right: ${window.innerWidth + 5 - rect.left}px;
+					height: ${rect.height}px;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;`,
+        right: () => `
+					top: ${rect.top}px;
+					left: ${rect.left + rect.width + 5}px;
+					height: ${rect.height}px;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+				`,
+        bottom: () => `
+					top: ${rect.top + rect.height + 5}px;
+					left: ${rect.left + rect.width / 2}px;
+					display: flex;
+					transform: translate(-50%, 0);
+					justify-content: center;
+				`,
+      };
 
-    setStyle(positions[currentPosition]);
-  }, []);
+      setStyle(positions[currentPosition]);
+    },
+    []
+  );
 
   const mouseEnter = useCallback(
     (event: MouseEvent) => {

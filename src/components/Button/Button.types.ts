@@ -1,12 +1,11 @@
 import React from 'react';
 
-export type ButtonVariantType = 'text' | 'contained' | 'outlined';
+export type ButtonVariantType = 'contained' | 'outlined';
 
 export type ButtonSizeVariant = 'small' | 'medium' | 'large';
 
 export type ButtonPaletteVariantType =
   | 'primary'
-  | 'secondary'
   | 'error'
   | 'success'
   | 'warning';
@@ -25,9 +24,13 @@ export interface ButtonProps {
    */
   size?: ButtonSizeVariant;
   /**
+   * Disabled click
+   */
+  disabled?: boolean;
+  /**
    * Button contents
    */
-  content: string | React.ReactNode;
+  content: string;
   /**
    * Optional click handler
    */

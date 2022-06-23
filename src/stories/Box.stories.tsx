@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Box } from '../components/Box';

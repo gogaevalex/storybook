@@ -10,7 +10,7 @@ import { PaletteType } from '../../types/PaletteType';
 export const Alert: FC<AlertProps> = ({
   m = 0,
   p = '10px',
-  children,
+  children = 'Hello',
   fullWidtht,
   fontSize = 18,
   type = 'info',

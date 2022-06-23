@@ -1,10 +1,11 @@
+import { ReactElement } from 'react';
 export type IconSizeVariantType = 'small' | 'medium' | 'large';
 export type IconSizeType = { [key in IconSizeVariantType]: number };
 
 export type IconPaletteVariantType = 'primary' | 'secondary';
 
 export type SvgProps = {
-  size?: number;
+  size?: string;
   color?: IconPaletteVariantType;
   /**
    * Margin
@@ -14,10 +15,11 @@ export type SvgProps = {
    * Padding
    */
   p?: string;
+  children?: ReactElement | ReactElement[];
 };
 
 export type BoxProps = {
-  size?: number;
+  size: string;
   color?: IconPaletteVariantType;
   /**
    * Margin

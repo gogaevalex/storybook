@@ -6,3 +6,10 @@ export type ITooltipProps = {
   width?: string;
   content: string | JSX.Element;
 };
+
+export type IRectProps = {
+  top?: string;
+  left?: string;
+  width?: string;
+  height?: string;
+};

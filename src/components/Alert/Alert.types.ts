@@ -14,6 +14,7 @@ export interface AlertProps extends CommonProps {
   fullWidtht?: boolean;
   fontSize?: number;
   icon?: JSX.Element;
+  children?: JSX.Element | string;
 }
 
 export type ContentProps = CommonProps;

@@ -6,7 +6,104 @@ import {
   BoxProps,
   TextTagVariantType,
   TextPaletteVariantType,
+  TextVariantType,
 } from './Text.types';
+
+const variantStylesSansSerif: { [key in TextVariantType]: string } = {
+  h1: `
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 700;
+  `,
+  h2: `
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  `,
+  h3: `
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22px;
+  `,
+  h4: `
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+  `,
+  h5: `
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22px;
+  `,
+  h6: `
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 13px;
+  `,
+  body1: `
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+  `,
+  body2: `
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  `,
+  caption: `
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  `,
+};
+
+const variantStylesSerif: { [key in TextVariantType]: string } = {
+  h1: `
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+  `,
+  h2: `
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+  `,
+  h3: `
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 23px;
+  `,
+  h4: `
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+  `,
+  h5: `
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+  `,
+  h6: `
+  font-weight: 700;
+    font-size: 11px;
+    line-height: 13px;
+  `,
+  body1: `
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+  `,
+  body2: `
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+  `,
+  caption: `
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+  `,
+};
 
 const getStyledComponent = (
   tag: TextTagVariantType,
@@ -16,10 +113,10 @@ const getStyledComponent = (
     const colorsData: { [key in TextPaletteVariantType]: string } = {
       inherit: 'inherit',
       primary: palette.primary.main,
-      secondary: palette.secondary.main,
-      textPrimary: palette.text.primary,
-      textSecondary: palette.text.secondary,
       error: palette.error.main,
+      success: palette.success.main,
+      warning: palette.warning.main,
+      white: palette.common.white,
     };
 
     return colorsData[color];
@@ -29,11 +126,10 @@ const getStyledComponent = (
     margin: ${({ m }) => m || 0};
     padding: ${({ p }) => p || 0};
     text-align: ${({ align }) => align};
+    font-family: ${({ serif }) => (serif ? 'Cormorant' : 'Roboto')};
     color: ${({ theme }) => getColor(theme.palette)};
-    ${({ theme, size }) =>
-      size ? `font-size: ${theme.textSize[size]}px};` : ''}
-    ${({ theme, weight }) =>
-      weight ? `font-weight: ${theme.textWeight[weight]};` : ''}
+    ${({ variant, serif }) =>
+      serif ? variantStylesSerif[variant] : variantStylesSansSerif[variant]}
   `;
 };
 
@@ -41,15 +137,15 @@ const getStyledComponent = (
  * Primary UI component for user interaction
  */
 export const Text: FC<TextProps> = ({
-  size,
-  weight,
+  variant = 'body1',
   tag = 'span',
   align = 'left',
-  color = 'textPrimary',
+  color = 'primary',
   display,
   children,
   m,
   p,
+  serif = false,
   ...props
 }) => {
   const Component = getStyledComponent(tag, color);
@@ -58,10 +154,10 @@ export const Text: FC<TextProps> = ({
       display={display}
       align={align}
       color={color}
-      size={size}
-      weight={weight}
+      variant={variant}
       m={m}
       p={p}
+      serif={serif}
       {...props}
     >
       {children}

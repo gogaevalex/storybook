@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag Default render 1`] = `
+<div>
+  <div
+    class="css-mrw1nn"
+  >
+    <span
+      class="css-vsw5yo"
+      color="inherit"
+    >
+      # фильмы
+    </span>
+  </div>
+</div>
+`;

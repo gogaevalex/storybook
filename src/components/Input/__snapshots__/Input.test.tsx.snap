@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Default render 1`] = `
+<div>
+  <div
+    class="css-1ffo92a"
+  >
+    <div
+      class="css-17owc11"
+    >
+      <input
+        autocomplete="off"
+        class="css-1xmsu08"
+        name="input"
+        placeholder=""
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;

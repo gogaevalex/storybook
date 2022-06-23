@@ -1,4 +1,4 @@
-export type TextSizeVariantType =
+export type TextVariantType =
   | 'h1'
   | 'h2'
   | 'h3'
@@ -12,18 +12,10 @@ export type TextSizeVariantType =
 export type TextPaletteVariantType =
   | 'inherit'
   | 'primary'
-  | 'secondary'
-  | 'textPrimary'
-  | 'textSecondary'
-  | 'error';
-
-export type TextWeightVariantType =
-  | 'extraLight'
-  | 'light'
-  | 'normal'
-  | 'bold'
-  | 'bolder'
-  | 'extraBolder';
+  | 'error'
+  | 'success'
+  | 'warning'
+  | 'white';
 
 export type TextTagVariantType =
   | 'span'
@@ -36,17 +28,8 @@ export type TextTagVariantType =
   | 'h5'
   | 'h6';
 
-export type TextSizeiteemType = {
-  size: number;
-  weight: number;
-};
-
 export type TextSizeType = {
-  [key in TextSizeVariantType]: number;
-};
-
-export type TextWeightType = {
-  [key in TextWeightVariantType]: number;
+  [key in TextVariantType]: number;
 };
 
 export type TextAlignType = 'left' | 'right' | 'center';
@@ -55,13 +38,9 @@ export type TextDisplayType = 'inline' | 'inline-block' | 'block';
 
 export interface TextProps {
   /**
-   * Size text
+   * Variant text
    */
-  size?: TextSizeVariantType;
-  /**
-   * Weight text
-   */
-  weight?: TextWeightVariantType;
+  variant?: TextVariantType;
   /**
    * Tag
    */
@@ -86,6 +65,11 @@ export interface TextProps {
    * Padding
    */
   p?: string;
+  /**
+   * Serif ? Cormorant : Roboto
+   */
+  serif?: boolean;
+  children: string;
 }
 
 export interface BoxProps {
@@ -94,6 +78,6 @@ export interface BoxProps {
   display?: TextDisplayType;
   align: TextAlignType;
   color: TextPaletteVariantType;
-  weight?: TextWeightVariantType;
-  size?: TextSizeVariantType;
+  variant: TextVariantType;
+  serif: boolean;
 }
